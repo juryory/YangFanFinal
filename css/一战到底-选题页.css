@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+}
+
+/* 背景图片 */
+.content {
+    position: relative;
+    width: auto;
+    height: auto;
+    max-height: 100vh;
+    aspect-ratio: 16 / 9; /* 保持16:9比例 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 确保图片完整显示 */
+}
+
+/* 通用按钮样式 */
+.topic-button {
+    position: absolute;
+    width: 11.4%; /* 按照图片宽度设置按钮宽度 */
+    height: 12%;  /* 按照图片高度设置按钮高度 */
+    background-color: rgba(255, 255, 255, 0); /* 初始设置为透明 */
+    border: none;
+    cursor: pointer;
+}
+
+/* 按钮1到5的定位 */
+.button-1 {
+    left: 10.7%;
+    top: 31.1%;
+}
+
+.button-2 {
+    left: 23.4%;
+    top: 31.1%;
+}
+
+.button-3 {
+    left: 36.2%;
+    top: 31.1%;
+}
+
+.button-4 {
+    left: 48.9%;
+    top: 31.1%;
+}
+
+.button-5 {
+    left: 61.6%;
+    top: 31.1%;
+}
+
+/* 按钮6到10的定位 */
+.button-6 {
+    left: 10.7%;
+    top: 49.2%;
+}
+
+.button-7 {
+    left: 23.4%;
+    top: 49.2%;
+}
+
+.button-8 {
+    left: 36.2%;
+    top: 49.2%;
+}
+
+.button-9 {
+    left: 48.9%;
+    top: 49.2%;
+}
+
+.button-10 {
+    left: 61.6%;
+    top: 49.2%;
+}

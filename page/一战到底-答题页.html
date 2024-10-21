@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>答题页 - 一站到底</title>
+    <link rel="stylesheet" href="/css/一战到底-答题页.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <img src="/assets/image/一战到底答题页背景图.webp" alt="答题页背景图" class="background-image">
+
+            <!-- 题目和选项显示区域 -->
+            <div class="question-area">
+                <p id="question-text">题目显示在这里</p>
+                <div id="options"></div>
+            </div>
+
+            <!-- 计时区域 -->
+            <div class="timer-area">
+                <p id="timer">00:00</p>
+            </div>
+
+            <!-- 答案区域 -->
+            <div class="answer-area">
+                <p id="answer-text">答案显示区域</p>
+            </div>
+
+            <!-- 四个按钮 -->
+            <button class="action-button" id="start-timer"></button>
+            <button class="action-button" id="show-answer"></button>
+            <button class="action-button" id="next-question"></button>
+            <button class="action-button" id="return-selection"></button>
+        </div>
+    </div>
+
+    <!-- 引用 JavaScript 文件 -->
+    <!-- 引入 Papa Parse 库 -->
+    <script src="/js/papaparse.min.js"></script>
+    <!-- 引用 JavaScript 文件 -->
+    <script src="/js/一战到底-答题页.js"></script>
+</body>
+</html>
