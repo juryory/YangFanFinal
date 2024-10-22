@@ -1,0 +1,175 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+}
+
+.content {
+    position: relative;
+    width: auto;
+    height: auto;
+    max-height: 100vh;
+    aspect-ratio: 16 / 9; /* 确保 16:9 比例 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 确保图片完整显示 */
+}
+
+/* 按钮通用样式 */
+.topic-button {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0); /* 按钮背景透明 */
+    width: 11.3%;
+    height: 11.2%;
+    border: none;
+    cursor: pointer;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* 按钮位置和大小设置 */
+.button-1 {
+    left: 35.6%;
+    top: 19.7%;
+    background-image: url('/assets/image/选分题按钮1.webp'); /* 设置按钮背景图片 */
+}
+
+.button-2 {
+    left: 48.3%;
+    top: 19.7%;
+    background-image: url('/assets/image/选分题按钮2.webp'); 
+}
+
+.button-3 {
+    left: 61%;
+    top: 19.7%;
+    background-image: url('/assets/image/选分题按钮3.webp'); 
+}
+
+.button-4 {
+    left: 73.8%;
+    top: 19.7%;
+    background-image: url('/assets/image/选分题按钮4.webp'); 
+}
+
+.button-5 {
+    left: 86.5%;
+    top: 19.7%;
+    background-image: url('/assets/image/选分题按钮5.webp'); 
+}
+
+.button-6 {
+    left: 35.6%;
+    top: 35.2%;
+    background-image: url('/assets/image/选分题按钮6.webp'); /* 设置按钮背景图片 */
+}
+
+.button-7 {
+    left: 48.3%;
+    top: 35.2%;
+    background-image: url('/assets/image/选分题按钮7.webp'); 
+}
+
+.button-8 {
+    left: 61%;
+    top: 35.2%;
+    background-image: url('/assets/image/选分题按钮8.webp'); 
+}
+
+.button-9 {
+    left: 73.8%;
+    top: 35.2%;
+    background-image: url('/assets/image/选分题按钮9.webp'); 
+}
+
+.button-10 {
+    left: 86.5%;
+    top: 35.2%;
+    background-image: url('/assets/image/选分题按钮10.webp'); 
+}
+
+.button-11 {
+    left: 35.6%;
+    top: 50.7%;
+    background-image: url('/assets/image/选分题按钮11.webp'); /* 设置按钮背景图片 */
+}
+
+.button-12 {
+    left: 48.3%;
+    top: 50.7%;
+    background-image: url('/assets/image/选分题按钮12.webp'); 
+}
+
+.button-13 {
+    left: 61%;
+    top: 50.7%;
+    background-image: url('/assets/image/选分题按钮13.webp'); 
+}
+
+.button-14 {
+    left: 73.8%;
+    top: 50.7%;
+    background-image: url('/assets/image/选分题按钮14.webp'); 
+}
+
+.button-15 {
+    left: 86.5%;
+    top: 50.7%;
+    background-image: url('/assets/image/选分题按钮15.webp'); 
+}
+
+.button-16 {
+    left: 35.6%;
+    top: 66.2%;
+    background-image: url('/assets/image/选分题按钮16.webp'); /* 设置按钮背景图片 */
+}
+
+.button-17 {
+    left: 48.3%;
+    top: 66.2%;
+    background-image: url('/assets/image/选分题按钮17.webp'); 
+}
+
+.button-18 {
+    left: 61%;
+    top: 66.2%;
+    background-image: url('/assets/image/选分题按钮18.webp'); 
+}
+
+.button-19 {
+    left: 73.8%;
+    top: 66.2%;
+    background-image: url('/assets/image/选分题按钮19.webp'); 
+}
+
+.button-20 {
+    left: 86.5%;
+    top: 66.2%;
+    background-image: url('/assets/image/选分题按钮20.webp'); 
+}
+.hidden {
+    display: none;
+}
