@@ -40,8 +40,8 @@ html, body {
 /* 通用按钮样式 */
 .topic-button {
     position: absolute;
-    width: 11.4%; /* 按照图片宽度设置按钮宽度 */
-    height: 12%;  /* 按照图片高度设置按钮高度 */
+    width: 11.3%; /* 按照图片宽度设置按钮宽度 */
+    height: 11%;  /* 按照图片高度设置按钮高度 */
     background-color: rgba(255, 255, 255, 0); /* 初始设置为透明 */
     border: none;
     cursor: pointer;
@@ -51,50 +51,94 @@ html, body {
 .button-1 {
     left: 10.7%;
     top: 31.1%;
+    background-image: url('/assets/image/一站到底选题页按钮1.webp'); /* 设置按钮背景图片 */
+    background-size: cover; /* 确保图片覆盖整个按钮区域 */
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .button-2 {
     left: 23.4%;
     top: 31.1%;
+    background-image: url('/assets/image/一站到底选题页按钮2.webp'); /* 设置按钮背景图片 */
+    background-size: cover; /* 确保图片覆盖整个按钮区域 */
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .button-3 {
     left: 36.2%;
     top: 31.1%;
+    background-image: url('/assets/image/一站到底选题页按钮3.webp'); /* 设置按钮背景图片 */
+    background-size: cover; /* 确保图片覆盖整个按钮区域 */
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .button-4 {
     left: 48.9%;
     top: 31.1%;
+    background-image: url('/assets/image/一站到底选题页按钮4.webp'); /* 设置按钮背景图片 */
+    background-size: cover; /* 确保图片覆盖整个按钮区域 */
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .button-5 {
     left: 61.6%;
     top: 31.1%;
+    background-image: url('/assets/image/一站到底选题页按钮5.webp'); /* 设置按钮背景图片 */
+    background-size: cover; /* 确保图片覆盖整个按钮区域 */
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 /* 按钮6到10的定位 */
 .button-6 {
     left: 10.7%;
     top: 49.2%;
+    background-image: url('/assets/image/一站到底选题页按钮6.webp'); /* 设置按钮背景图片 */
+    background-size: cover; /* 确保图片覆盖整个按钮区域 */
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .button-7 {
     left: 23.4%;
     top: 49.2%;
+    background-image: url('/assets/image/一站到底选题页按钮7.webp'); /* 设置按钮背景图片 */
+    background-size: cover; /* 确保图片覆盖整个按钮区域 */
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .button-8 {
     left: 36.2%;
     top: 49.2%;
+    background-image: url('/assets/image/一站到底选题页按钮8.webp'); /* 设置按钮背景图片 */
+    background-size: cover; /* 确保图片覆盖整个按钮区域 */
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .button-9 {
     left: 48.9%;
     top: 49.2%;
+    background-image: url('/assets/image/一站到底选题页按钮9.webp'); /* 设置按钮背景图片 */
+    background-size: cover; /* 确保图片覆盖整个按钮区域 */
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .button-10 {
     left: 61.6%;
     top: 49.2%;
+    background-image: url('/assets/image/一站到底选题页按钮10.webp'); /* 设置按钮背景图片 */
+    background-size: cover; /* 确保图片覆盖整个按钮区域 */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.hidden {
+    display: none;
 }

@@ -44,13 +44,19 @@ html, body {
     top: 22.5%;
     width: 64.5%;
     height: 59.1%;
+    padding: 20px;
     background-color: rgba(255, 255, 255, 0); /* 背景透明 */
+    font-family: 'Source Han Sans', sans-serif;
+    font-weight: 500;
+    font-size: 3vw; 
+    line-height: 1.2; /* 保证文字的行高适中 */
+    overflow: hidden; /* 确保文字不会溢出容器 */
 }
 
 /* 计时区域 */
 .timer-area {
     position: absolute;
-    left: 78.9%;
+    left: 79.1%;
     top: 28.3%;
     width: 10.7%;
     height: 7.1%;
@@ -59,8 +65,11 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 4vw;
+    font-family: 'Source Han Sans', sans-serif;
+    font-weight: 600;
+    font-size: 3vw;  /* 字体大小 */
     text-align: center;
+    letter-spacing: 0.1em;  /* 增加字间距 */
 }
 
 /* 答案区域 */
@@ -75,7 +84,9 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2vw;
+    font-family: 'Source Han Sans', sans-serif;
+    font-weight: 500;
+    font-size: 2.7vw;
     text-align: center;
 }
 
@@ -119,4 +130,13 @@ html, body {
 #return-selection {
     left: 84.5%;
     top: 84.4%;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    transform: scale(1.5); /* 调整单选/复选框的大小 */
+    margin-right: 10px; /* 增加间距 */
+}
+
+label {
+    color: black;  /* 默认颜色 */
 }
