@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let wrongSound = new Audio('/assets/audio/wrong-sound.mp3');
     let countdownSound = new Audio('/assets/audio/countdown-sound.mp3');
     let endSound = new Audio('/assets/audio/end-sound.mp3');
-    let tickingSound = new Audio('/assets/audio/一战到底计时.mp3'); // 加载计时音效
+    let tickingSound = new Audio('/assets/audio/一站到底计时.mp3'); // 加载计时音效
 
     let timerInterval;
     let timerRunning = false;
@@ -122,6 +122,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 返回选题页面
     document.getElementById("return-selection").addEventListener("click", () => {
-        window.location.href = '/page/一战到底-选题页.html';
+        window.location.href = '/page/一站到底-选题页.html';
     });
 });
