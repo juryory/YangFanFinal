@@ -61,7 +61,7 @@ html, body {
     width: 10.7%;
     height: 7.1%;
     background-color: rgba(0, 0, 0, 0);
-    color: white;
+    color: #c1000c;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,7 +80,7 @@ html, body {
     width: 22.8%;
     height: 11.9%;
     background-color: rgba(0, 0, 0, 0);
-    color: white;
+    color: #c1000c;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -155,4 +155,14 @@ label {
 
 .bottom-links a:hover {
     text-decoration: underline;  /* 鼠标悬停时可以选择显示下划线 */
+}
+
+.completed-message {
+    font-size: 5vw;  /* 放大字体 */
+    text-align: center;  /* 居中对齐 */
+    display: flex;  /* 使用 flexbox */
+    justify-content: center;  /* 水平居中 */
+    align-items: center;  /* 垂直居中 */
+    height: 100vh;  /* 占满整个页面高度 */
+    color: #333;  /* 文字颜色，可根据需要调整 */
 }
