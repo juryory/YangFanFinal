@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let timerInterval;
     let timerRunning = false;
-    let countdownSeconds = 60; // 默认倒计时
+    let countdownSeconds = 60;  // 默认倒计时
+    let timeLeft = countdownSeconds;  // 初始化时保存剩余时间
     let questions = [];
     let correctAnswer = '';
 
@@ -34,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else {
                     selectedLabel.style.color = '';  // 恢复未选中项的颜色
                 }
-    
+
                 // 单选题重置其他选项的颜色和状态
                 if (type === '单选') {
                     document.querySelectorAll('input[name="option"]:not(:checked)').forEach(opt => {
@@ -54,19 +55,22 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("next-question").style.display = 'none';
             return;
         }
-    
+
+        // 清空答案显示区域
+        document.getElementById("answer-text").innerHTML = '';  // 让答案区域为空
+
         let questionData = questions[index];
         correctAnswer = questionData.correct_answer;  // 确保 correctAnswer 正确设置
         let fontSize = questionData.font_size || 3;  // 获取字体大小
-    
+
         // 设置题目的字体大小
         document.getElementById("question-text").textContent = questionData.question;
         document.getElementById("question-text").style.fontSize = fontSize + 'vw';
-    
+
         let options = questionData.options.split('|');
         let optionsContainer = document.getElementById("options");
         optionsContainer.innerHTML = '';
-    
+
         // 设置选项的字体大小
         options.forEach((option, i) => {
             let optionElement = document.createElement('div');
@@ -76,24 +80,65 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
             optionsContainer.appendChild(optionElement);
         });
-    
+
         setupOptionListeners(questionData.type);
-    
-        // 根据题型和分数设置倒计时的总时长
-        if (questionData.tag.includes('必答题')) {
-            countdownSeconds = questionData.type === '多选' ? 10 : 5;
-        } else if (questionData.tag.includes('分题')) {
-            if (questionData.tag.includes('20分') || questionData.tag.includes('40分')) {
-                countdownSeconds = 10;
-            } else if (questionData.tag.includes('60分')) {
-                countdownSeconds = 30;
+
+        // 不重置倒计时，如果已经在运行
+        if (!timerRunning) {
+            if (questionData.tag.includes('必答题')) {
+                countdownSeconds = questionData.type === '多选' ? 10 : 5;
+            } else if (questionData.tag.includes('分题')) {
+                if (questionData.tag.includes('20分') || questionData.tag.includes('40分')) {
+                    countdownSeconds = 10;
+                } else if (questionData.tag.includes('60分')) {
+                    countdownSeconds = 30;
+                }
             }
+            timeLeft = countdownSeconds;
+            updateTimerDisplay(timeLeft);  // 仅在首次或计时器暂停时更新显示
         }
-    
-        // 更新显示倒计时，但不启动计时
-        updateTimerDisplay(countdownSeconds);  // 更新显示
-        console.log("倒计时: ", countdownSeconds);
     }
+
+    // 开始计时函数
+    function startTimer() {
+        if (timeLeft === undefined || timeLeft <= 0) {
+            console.log("倒计时未正确初始化");
+            return;
+        }
+
+        timerRunning = true;
+        tickingSound.play();  // 播放音频
+        updateTimerDisplay(timeLeft);
+
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            updateTimerDisplay(timeLeft);
+
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                tickingSound.pause();
+                endSound.play();
+                timerRunning = false;
+            }
+        }, 1000);
+    }
+
+    // 暂停计时函数
+    function pauseTimer() {
+        clearInterval(timerInterval);  // 暂停计时
+        tickingSound.pause();  // 暂停音频
+        timerRunning = false;  // 设置状态为暂停
+    }
+
+    // 按钮事件
+    let startTimerButton = document.getElementById("start-timer");
+    startTimerButton.addEventListener("click", () => {
+        if (!timerRunning) {
+            startTimer();  // 继续计时
+        } else {
+            pauseTimer();  // 暂停计时
+        }
+    });
 
     // 更新倒计时显示
     function updateTimerDisplay(seconds) {
@@ -147,10 +192,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const answerText = document.getElementById("answer-text");
 
-        clearInterval(timerInterval);  // 停止倒计时，但不隐藏倒计时显示
-        tickingSound.pause();  // 停止倒计时声音
-        timerRunning = false;
-
         // 判断答案是否正确
         if (userAnswerString === correctAnswer) {
             answerText.innerHTML = `回答正确<br>${correctAnswer}`;
@@ -163,48 +204,18 @@ document.addEventListener("DOMContentLoaded", () => {
         answerText.style.display = 'block';
     }
 
-    // 计时器和查看答案功能
-    let timerElement = document.getElementById("timer");
-    let startTimerButton = document.getElementById("start-timer");
-
-    startTimerButton.addEventListener("click", () => {
-        if (!timerRunning) {
-            startTimer();  // 点击按钮后启动倒计时
+    // "下一题"按钮
+    document.getElementById("next-question").addEventListener("click", () => {
+        questionNumber += 1;
+        if (questionNumber < questions.length) {
+            loadQuestion(questionNumber);
+            window.history.pushState({}, '', `?tag=${encodeURIComponent(tag)}&q=${questionNumber + 1}`);
         } else {
-            pauseTimer();  // 如果计时器正在运行，点击按钮暂停
+            document.getElementById("question-text").textContent = "本轮题目已全部答完";
+            document.getElementById("options").innerHTML = '';
+            document.getElementById("next-question").style.display = 'none';
         }
     });
-
-    // 开始计时
-    function startTimer() {
-        if (countdownSeconds === undefined || countdownSeconds <= 0) {
-            console.log("倒计时未正确初始化");
-            return;  // 确保倒计时有正确的值
-        }
-        timerRunning = true;
-        tickingSound.play();
-        let timeLeft = countdownSeconds;  // 使用动态更新的 countdownSeconds
-        updateTimerDisplay(timeLeft);
-
-        timerInterval = setInterval(() => {
-            timeLeft--;
-            updateTimerDisplay(timeLeft);
-
-            if (timeLeft <= 0) {
-                clearInterval(timerInterval);
-                tickingSound.pause();
-                endSound.play();
-                timerRunning = false;
-            }
-        }, 1000);
-    }
-
-    // 暂停计时
-    function pauseTimer() {
-        clearInterval(timerInterval);
-        tickingSound.pause();
-        timerRunning = false;
-    }
 
     // 添加点击事件监听器到 "show-answer" 按钮
     document.getElementById("show-answer").addEventListener("click", () => {
@@ -213,6 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 返回选题页面
     document.getElementById("return-selection").addEventListener("click", () => {
-        window.location.href = '/js/一站到底-选题页.js';
+        window.location.href = '/page/一站到底-选题页.html';
     });
+    
 });
