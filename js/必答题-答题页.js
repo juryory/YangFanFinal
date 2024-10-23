@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let timerInterval;
     let timerRunning = false;
-    let countdownSeconds = 120;
+    let countdownSeconds = 60; // 默认倒计时
     let questions = [];
     let correctAnswer = '';
 
@@ -24,6 +24,27 @@ document.addEventListener("DOMContentLoaded", () => {
             loadQuestion(questionNumber);
         }
     });
+
+    function setupOptionListeners(type) {
+        document.querySelectorAll('input[name="option"]').forEach(option => {
+            option.addEventListener('change', function(event) {
+                let selectedLabel = document.querySelector(`label[for="${event.target.id}"]`);
+                if (event.target.checked) {
+                    selectedLabel.style.color = '#b8261e';  // 改变选中项的颜色
+                } else {
+                    selectedLabel.style.color = '';  // 恢复未选中项的颜色
+                }
+    
+                // 单选题重置其他选项的颜色和状态
+                if (type === '单选') {
+                    document.querySelectorAll('input[name="option"]:not(:checked)').forEach(opt => {
+                        let label = document.querySelector(`label[for="${opt.id}"]`);
+                        label.style.color = '';  // 恢复未选中项的颜色
+                    });
+                }
+            });
+        });
+    }
 
     // 加载题目
     function loadQuestion(index) {
@@ -57,28 +78,28 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     
         setupOptionListeners(questionData.type);
+    
+        // 根据题型和分数设置倒计时的总时长
+        if (questionData.tag.includes('必答题')) {
+            countdownSeconds = questionData.type === '多选' ? 10 : 5;
+        } else if (questionData.tag.includes('分题')) {
+            if (questionData.tag.includes('20分') || questionData.tag.includes('40分')) {
+                countdownSeconds = 10;
+            } else if (questionData.tag.includes('60分')) {
+                countdownSeconds = 30;
+            }
+        }
+    
+        // 更新显示倒计时，但不启动计时
+        updateTimerDisplay(countdownSeconds);  // 更新显示
+        console.log("倒计时: ", countdownSeconds);
     }
 
-    // 监听选项的选择
-    function setupOptionListeners(type) {
-        document.querySelectorAll('input[name="option"]').forEach(option => {
-            option.addEventListener('change', function(event) {
-                let selectedLabel = document.querySelector(`label[for="${event.target.id}"]`);
-                if (event.target.checked) {
-                    selectedLabel.style.color = '#b8261e';  // 改变选中项的颜色
-                } else {
-                    selectedLabel.style.color = '';  // 恢复未选中项的颜色
-                }
-
-                // 单选题重置其他选项的颜色和状态
-                if (type === '单选') {
-                    document.querySelectorAll('input[name="option"]:not(:checked)').forEach(opt => {
-                        let label = document.querySelector(`label[for="${opt.id}"]`);
-                        label.style.color = '';  // 恢复未选中项的颜色
-                    });
-                }
-            });
-        });
+    // 更新倒计时显示
+    function updateTimerDisplay(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const sec = seconds % 60;
+        document.getElementById("timer").textContent = `${minutes.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
     }
 
     // 监听 A-H 按键选择选项
@@ -116,11 +137,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // 显示答案并判断是否正确
-    document.getElementById("show-answer").addEventListener("click", () => {
-        submitAnswer();  // 调用与回车键相同的提交答案函数
-    });
-
     // 提交答案的函数
     function submitAnswer() {
         const userAnswers = [];
@@ -130,7 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const userAnswerString = userAnswers.sort().join('').trim();
 
         const answerText = document.getElementById("answer-text");
-        const timerElement = document.getElementById("timer");
 
         clearInterval(timerInterval);  // 停止倒计时，但不隐藏倒计时显示
         tickingSound.pause();  // 停止倒计时声音
@@ -149,21 +164,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 计时器和查看答案功能
-    const timerElement = document.getElementById("timer");
-    const startTimerButton = document.getElementById("start-timer");
+    let timerElement = document.getElementById("timer");
+    let startTimerButton = document.getElementById("start-timer");
 
     startTimerButton.addEventListener("click", () => {
         if (!timerRunning) {
-            startTimer();
+            startTimer();  // 点击按钮后启动倒计时
         } else {
-            pauseTimer();
+            pauseTimer();  // 如果计时器正在运行，点击按钮暂停
         }
     });
 
+    // 开始计时
     function startTimer() {
+        if (countdownSeconds === undefined || countdownSeconds <= 0) {
+            console.log("倒计时未正确初始化");
+            return;  // 确保倒计时有正确的值
+        }
         timerRunning = true;
         tickingSound.play();
-        let timeLeft = countdownSeconds;
+        let timeLeft = countdownSeconds;  // 使用动态更新的 countdownSeconds
         updateTimerDisplay(timeLeft);
 
         timerInterval = setInterval(() => {
@@ -179,16 +199,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1000);
     }
 
+    // 暂停计时
     function pauseTimer() {
         clearInterval(timerInterval);
         tickingSound.pause();
         timerRunning = false;
-    }
-
-    function updateTimerDisplay(seconds) {
-        const minutes = Math.floor(seconds / 60);
-        const sec = seconds % 60;
-        timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
     }
 
     // "下一题"按钮
