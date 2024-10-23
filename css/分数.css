@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+}
+
+/* 背景图片作为 img 元素显示，并保持16:9比例 */
+.content {
+    position: relative;
+    width: auto;
+    height: auto;
+    max-height: 100vh;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 确保图片不会被裁剪或变形 */
+.background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 确保图片完整显示 */
+}
+
+table {
+    position: absolute;
+    top: 20%; /* 调整表格的垂直位置 */
+    left: 19%; /* 调整表格的水平位置 */
+    width: 50%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+button {
+    padding: 5px 10px;
+}
