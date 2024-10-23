@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+    const localStorageKeyPrefix = '一站到底';
     // 获取所有选题按钮并为它们添加点击事件
     document.querySelectorAll('.topic-button').forEach((button, index) => {
         // 检查 localStorage 中是否记录了隐藏状态，extra-button 不受影响

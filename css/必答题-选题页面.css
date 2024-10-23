@@ -41,8 +41,8 @@ html, body {
 .topic-button {
     position: absolute;
     background-color: rgba(255, 255, 255, 0); /* 按钮背景透明 */
-    width: 23.5%;
-    height: 74.2%;
+    width: 11.3%;
+    height: 11.2%;
     border: none;
     cursor: pointer;
     background-size: cover;
@@ -52,34 +52,68 @@ html, body {
 
 /* 按钮位置和大小设置 */
 .button-1 {
-    left: 8.8%;
-    top: 18.4%;
+    left: 35.6%;
+    top: 38.2%;
+    background-image: url('/assets/image/选分题按钮1.webp'); /* 设置按钮背景图片 */
 }
 
 .button-2 {
-    left: 38.3%;
-    top: 18.4%;
+    left: 48.3%;
+    top: 38.2%;
+    background-image: url('/assets/image/选分题按钮2.webp'); 
 }
 
 .button-3 {
-    left: 67.9%;
-    top: 18.4%;
+    left: 61%;
+    top: 38.2%;
+    background-image: url('/assets/image/选分题按钮3.webp'); 
 }
 
-/* 额外按钮样式 */
-/* .extra-button {
-    position: absolute;
-    left: 35.2%;
-    top: 68.1%;
-    width: 27.4%;
-    height: 12.8%;
-    background-color: rgba(255, 255, 255, 0);
-    border: none;
-    cursor: pointer;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-} */
+.button-4 {
+    left: 73.8%;
+    top: 38.2%;
+    background-image: url('/assets/image/选分题按钮4.webp'); 
+}
+
+.button-5 {
+    left: 86.5%;
+    top: 38.2%;
+    background-image: url('/assets/image/选分题按钮5.webp'); 
+}
+
+.button-6 {
+    left: 35.6%;
+    top: 56.4%;
+    background-image: url('/assets/image/选分题按钮6.webp'); /* 设置按钮背景图片 */
+}
+
+.button-7 {
+    left: 48.3%;
+    top: 56.4%;
+    background-image: url('/assets/image/选分题按钮7.webp'); 
+}
+
+.button-8 {
+    left: 61%;
+    top: 56.4%;
+    background-image: url('/assets/image/选分题按钮8.webp'); 
+}
+
+.button-9 {
+    left: 73.8%;
+    top: 56.4%;
+    background-image: url('/assets/image/选分题按钮9.webp'); 
+}
+
+.button-10 {
+    left: 86.5%;
+    top: 56.4%;
+    background-image: url('/assets/image/选分题按钮10.webp');
+}
+
+.hidden {
+    display: none;
+}
 
 /* 位置调整 */
 .bottom-links {
@@ -103,8 +137,8 @@ html, body {
 
 .next2-links {
     position: absolute;
-    right: 3%;
-    bottom: 2%;
+    right: 5%;
+    bottom: 5%;
     font-size: 2vw;
     font-family: 'Source Han Sans', sans-serif;
     font-weight: 800;

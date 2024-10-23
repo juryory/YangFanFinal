@@ -96,16 +96,12 @@ html, body {
     width: 13.8%;
     height: 10.4%;
     background-color: rgba(255, 255, 255, 0);
-    color: white;
-    font-family: 'Source Han Sans', sans-serif;
-    font-weight: 600;
     display: flex;
     justify-content: center;
     align-items: center;
     border: none;
     cursor: pointer;
     text-align: center;
-    font-size: 1.5vw;
 }
 
 /* 按钮1 - 开始计时 */
@@ -153,7 +149,7 @@ label {
 
 /* 链接样式覆盖 */
 .bottom-links a {
-    color: #507aa5;  /* 设置字体颜色为 #9c1f14 */
+    color: #9c1f14;  /* 设置字体颜色为 #9c1f14 */
     text-decoration: none;  /* 去掉下划线 */
 }
 

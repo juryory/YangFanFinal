@@ -51,3 +51,23 @@ html, body {
     border: none;
     cursor: pointer;
 }
+
+/* 位置调整 */
+.bottom-links {
+    position: absolute;
+    left: 2%;
+    bottom: 2%;
+    font-size: 1vw;
+    font-family: 'Source Han Sans', sans-serif;
+    font-weight: 100;
+}
+
+/* 链接样式覆盖 */
+.bottom-links a {
+    color: #9c1f14;  /* 设置字体颜色为 #9c1f14 */
+    text-decoration: none;  /* 去掉下划线 */
+}
+
+.bottom-links a:hover {
+    text-decoration: underline;  /* 鼠标悬停时可以选择显示下划线 */
+}
