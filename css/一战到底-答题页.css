@@ -132,10 +132,51 @@ html, body {
     top: 84.4%;
 }
 
-input[type="radio"], input[type="checkbox"] {
-    width: 2.5vw;   /* 使用 vw 单位设置宽度 */
-    height: 2.5vw;  /* 使用 vw 单位设置高度 */
-    margin-right: 2px; /* 增加与标签的间距 */
+/* 复选框 (多选) 样式 */
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 2vw;
+    height: 2vw;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 0; /* 方形 */
+    position: relative;
+}
+
+input[type="checkbox"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.2vw;
+    height: 1.2vw;
+    background-color: #007bff;
+    transform: translate(-50%, -50%);
+}
+
+/* 单选框 (单选) 样式 */
+input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 2vw;
+    height: 2vw;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 50%; /* 圆形 */
+    position: relative;
+}
+
+input[type="radio"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.2vw;
+    height: 1.2vw;
+    background-color: #007bff;
+    border-radius: 50%; /* 圆形 */
+    transform: translate(-50%, -50%);
 }
 
 label {

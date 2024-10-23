@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     let correctSound = new Audio('/assets/audio/correct-sound.mp3');
     let wrongSound = new Audio('/assets/audio/wrong-sound.mp3');
-    let tickingSound = new Audio('/assets/audio/一站到底计时.mp3');
+    let tickingSound = new Audio('/assets/audio/一战到底计时.mp3');
     let endSound = new Audio('/assets/audio/end-sound.mp3');
 
     let timerInterval;

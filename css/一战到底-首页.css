@@ -45,7 +45,7 @@ html, body {
     width: 27.4%; /* 按照图片宽度设置按钮宽度 */
     height: 12.7%; /* 按照图片高度设置按钮高度 */
     
-    background-image: url('/assets/image/一站到底首页按钮图.png'); /* 设置按钮背景图片 */
+    background-image: url('/assets/image/一战到底首页按钮图.png'); /* 设置按钮背景图片 */
     background-color: rgba(255, 255, 255, 0); /* 悬停时保持透明 */
     background-size: cover; /* 确保图片覆盖整个按钮区域 */
     background-repeat: no-repeat;

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     let correctSound = new Audio('/assets/audio/correct-sound.mp3');
     let wrongSound = new Audio('/assets/audio/wrong-sound.mp3');
-    let tickingSound = new Audio('/assets/audio/一站到底计时.mp3');
+    let tickingSound = new Audio('/assets/audio/一战到底计时.mp3');
     let endSound = new Audio('/assets/audio/end-sound.mp3');
 
     let timerInterval;
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
             option.addEventListener('change', function(event) {
                 let selectedLabel = document.querySelector(`label[for="${event.target.id}"]`);
                 if (event.target.checked) {
-                    selectedLabel.style.color = '#b8261e';  // 改变选中项的颜色
+                    selectedLabel.style.color = '#007bff';  // 改变选中项的颜色
                 } else {
                     selectedLabel.style.color = '';  // 恢复未选中项的颜色
                 }
@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 返回选题页面
     document.getElementById("return-selection").addEventListener("click", () => {
-        window.location.href = '/page/一站到底-选题页.html';
+        window.location.href = '/page/一战到底-选题页.html';
     });
     
 });
