@@ -133,8 +133,9 @@ html, body {
 }
 
 input[type="radio"], input[type="checkbox"] {
-    transform: scale(1.5); /* 调整单选/复选框的大小 */
-    margin-right: 10px; /* 增加间距 */
+    width: 2.5vw;   /* 使用 vw 单位设置宽度 */
+    height: 2.5vw;  /* 使用 vw 单位设置高度 */
+    margin-right: 2px; /* 增加与标签的间距 */
 }
 
 label {
