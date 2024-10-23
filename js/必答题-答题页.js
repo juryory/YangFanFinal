@@ -92,7 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
     
         // 更新显示倒计时，但不启动计时
         updateTimerDisplay(countdownSeconds);  // 更新显示
-        console.log("倒计时: ", countdownSeconds);
     }
 
     // 更新倒计时显示
