@@ -206,6 +206,11 @@ document.addEventListener("DOMContentLoaded", () => {
         timerRunning = false;
     }
 
+    // 添加点击事件监听器到 "show-answer" 按钮
+    document.getElementById("show-answer").addEventListener("click", () => {
+        submitAnswer();
+    });
+
     // 返回选题页面
     document.getElementById("return-selection").addEventListener("click", () => {
         window.location.href = '/page/选分题-选分页.html';
