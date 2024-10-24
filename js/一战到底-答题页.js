@@ -97,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
             timeLeft = countdownSeconds;
             updateTimerDisplay(timeLeft);  // 仅在首次或计时器暂停时更新显示
         }
+
     }
 
     // 开始计时函数

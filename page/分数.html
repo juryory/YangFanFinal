@@ -44,62 +44,80 @@
             object-fit: contain;
         }
 
-        /* 分数榜单容器 */
-        .scoreboard {
+        /* 文字样式 */
+        .text {
             position: absolute;
-            top: 20%;
-            left: 19%;
-            width: 55%;
-            background-color: rgba(255, 255, 255, 0.8);
-            height: 74%; /* 父容器的高度，使用百分比 */
-            padding: 2%;
-        }
-
-        /* 单个队伍的容器 */
-        .team {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 10%; /* 每行的高度，使用百分比 */
-            margin-bottom: 1%;
-        }
-
-        .team-name {
-            width: 36%;
-            text-align: left;
-        }
-
-        .team-score {
-            width: 7%;
+            font-family: '思源黑体 Medium', sans-serif;
+            color: #b50808;
             text-align: center;
-        }
-
-        .team-buttons {
             display: flex;
-            width: 13%; /* 两个按钮的总宽度 */
-            height: 100%;
-            justify-content: space-between;
-            gap: 2%;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* 加减分按钮样式 */
-        .button {
-            width: 48%;
-            height: 100%;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: transparent; /* 确保按钮没有灰色背景 */
-            border: none;
-            cursor: pointer;
+        /* 参赛队伍 */
+        .team-label {
+            top: 20.7%;
+            left: 19.4%;
+            width: 38.2%;
+            height: 4.3%;
+            font-size: 2vw;
+            font-family: '思源黑体 Medium', sans-serif;
         }
 
-        .add-button {
+        /* 得分 */
+        .score-label {
+            top: 20.7%;
+            left: 59.6%;
+            width: 8.7%;
+            height: 4.3%;
+            font-size: 2vw;
+        }
+
+        /* 北京朝阳分公司——安立路之狼战队 */
+        .team-name {
+            top: 27.5%;
+            left: 19.4%;
+            width: 38.2%;
+            height: 5.4%;
+            font-size: 2vw;
+            color: #000000;
+        }
+
+        /* 100分 */
+        .score-value {
+            top: 27.5%;
+            left: 59.6%;
+            width: 10.7%;
+            height: 5.4%;
+            font-size: 2vw;
+            color: #b50808;
+        }
+
+        /* 加分按钮 */
+        .score-add-btn {
+            top: 27.5%;
+            left: 72.7%;
+            width: 3%;
+            height: 5.4%;
+            background: transparent;
             background-image: url('/assets/image/分数加分按钮.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: none;
         }
 
-        .subtract-button {
+        /* 减分按钮 */
+        .score-subtract-btn {
+            top: 27.5%;
+            left: 77.3%;
+            width: 3%;
+            height: 5.4%;
+            background: transparent;
             background-image: url('/assets/image/分数减分按钮.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: none;
         }
     </style>
 </head>
@@ -109,42 +127,33 @@
             <!-- 背景图片 -->
             <img src="/assets/image/分数背景图.webp" alt="背景图片" class="background-image">
 
-            <!-- 分数榜单容器 -->
-            <div class="scoreboard">
-                <div class="team">
-                    <div class="team-name">队伍 1</div>
-                    <div class="team-score" id="score1">0</div>
-                    <div class="team-buttons">
-                        <button class="button add-button" onclick="changeScore('score1', 1)"></button>
-                        <button class="button subtract-button" onclick="changeScore('score1', -1)"></button>
-                    </div>
-                </div>
-                <div class="team">
-                    <div class="team-name">队伍 2</div>
-                    <div class="team-score" id="score2">0</div>
-                    <div class="team-buttons">
-                        <button class="button add-button" onclick="changeScore('score2', 1)"></button>
-                        <button class="button subtract-button" onclick="changeScore('score2', -1)"></button>
-                    </div>
-                </div>
-                <div class="team">
-                    <div class="team-name">队伍 3</div>
-                    <div class="team-score" id="score3">0</div>
-                    <div class="team-buttons">
-                        <button class="button add-button" onclick="changeScore('score3', 1)"></button>
-                        <button class="button subtract-button" onclick="changeScore('score3', -1)"></button>
-                    </div>
-                </div>
-                <!-- 继续为其他队伍添加行 -->
-            </div>
+            <!-- 文字1：参赛队伍 -->
+            <div class="text team-label">参赛队伍</div>
+
+            <!-- 文字2：得分 -->
+            <div class="text score-label">得分</div>
+
+            <!-- 文字3：北京朝阳分公司——安立路之狼战队 -->
+            <div class="text team-name">北京朝阳分公司——安立路之狼战队</div>
+
+            <!-- 文字4：100分 -->
+            <div class="text score-value" id="score">100分</div>
+
+            <!-- 按钮1：加分 -->
+            <button class="score-add-btn" onclick="adjustScore(10)"></button>
+
+            <!-- 按钮2：减分 -->
+            <button class="score-subtract-btn" onclick="adjustScore(-10)"></button>
         </div>
     </div>
 
     <script>
-        function changeScore(teamId, value) {
-            var scoreElement = document.getElementById(teamId);
-            var currentScore = parseInt(scoreElement.innerText);
-            scoreElement.innerText = currentScore + value;
+        // Function to adjust the score
+        function adjustScore(value) {
+            const scoreElement = document.getElementById('score');
+            let currentScore = parseInt(scoreElement.innerText.replace('分', ''));
+            currentScore += value;
+            scoreElement.innerText = `${currentScore}分`;
         }
     </script>
 </body>
