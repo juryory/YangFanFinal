@@ -48,7 +48,6 @@ html, body {
     background-color: rgba(255, 255, 255, 0); /* 背景透明 */
     font-family: 'Source Han Sans', sans-serif;
     font-weight: 500;
-    font-size: 3vw; 
     line-height: 1.2; /* 保证文字的行高适中 */
     overflow: hidden; /* 确保文字不会溢出容器 */
 }
@@ -136,8 +135,8 @@ html, body {
 input[type="checkbox"] {
     -webkit-appearance: none;
     appearance: none;
-    width: 2vw;
-    height: 2vw;
+    width: 1.5vw;
+    height: 1.5vw;
     background-color: #fff;
     border: 2px solid #ccc;
     border-radius: 0; /* 方形 */
